@@ -246,28 +246,6 @@ class UI:
         self.entry_cur.set_alignment(0.5)
         self.entry_cur.modify_font(pango.FontDescription('36'))
 
-        # "Next slide" frame
-        frame = gtk.Frame("Next slide")
-        table.attach(frame, 6, 10, 0, 1)
-        align = gtk.Alignment(0.5, 0.5, 1, 1)
-        align.set_padding(0, 0, 12, 0)
-        frame.add(align)
-        vbox = gtk.VBox()
-        align.add(vbox)
-        vbox.pack_start(self.p_frame_next)
-        self.label_next.set_justify(gtk.JUSTIFY_CENTER)
-        self.label_next.set_use_markup(True)
-        vbox.pack_start(self.label_next, False, False, 10)
-        self.p_da_next.modify_bg(gtk.STATE_NORMAL, black)
-        self.p_da_next.connect("expose-event", self.on_expose)
-        self.p_da_next.set_name("p_da_next")
-        if self.notes_mode:
-            self.cache.add_widget("p_da_next", PDF_CONTENT_PAGE)
-        else :
-            self.cache.add_widget("p_da_next", PDF_REGULAR)
-        self.p_da_next.connect("configure-event", self.on_configure)
-        self.p_frame_next.add(self.p_da_next)
-
         p_win.connect("destroy", gtk.main_quit)
         p_win.show_all()
 
@@ -361,7 +339,6 @@ class UI:
         # Don't queue draw event but draw directly (faster)
         self.on_expose(self.c_da)
         self.on_expose(self.p_da_cur)
-        self.on_expose(self.p_da_next)
 
         # Prerender the 4 next pages and the 2 previous ones
         cur = page_cur.number()
