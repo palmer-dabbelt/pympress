@@ -268,26 +268,6 @@ class UI:
         self.p_da_next.connect("configure-event", self.on_configure)
         self.p_frame_next.add(self.p_da_next)
 
-        # "Time elapsed" frame
-        frame = gtk.Frame("Time elapsed")
-        table.attach(frame, 0, 5, 1, 2, yoptions=gtk.FILL)
-        align = gtk.Alignment(0.5, 0.5, 1, 1)
-        align.set_padding(10, 10, 12, 0)
-        frame.add(align)
-        self.label_time.set_justify(gtk.JUSTIFY_CENTER)
-        self.label_time.set_use_markup(True)
-        align.add(self.label_time)
-
-        # "Clock" frame
-        frame = gtk.Frame("Clock")
-        table.attach(frame, 5, 10, 1, 2, yoptions=gtk.FILL)
-        align = gtk.Alignment(0.5, 0.5, 1, 1)
-        align.set_padding(10, 10, 12, 0)
-        frame.add(align)
-        self.label_clock.set_justify(gtk.JUSTIFY_CENTER)
-        self.label_clock.set_use_markup(True)
-        align.add(self.label_clock)
-
         p_win.connect("destroy", gtk.main_quit)
         p_win.show_all()
 
