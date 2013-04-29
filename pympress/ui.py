@@ -324,9 +324,9 @@ class UI:
         self.on_expose(self.c_da)
         self.on_expose(self.p_da_cur)
 
-        # Prerender the 4 next pages and the 2 previous ones
+        # Prerender the 40 next pages and the 2 previous ones
         cur = page_cur.number()
-        page_max = min(self.doc.pages_number(), cur + 5)
+        page_max = min(self.doc.pages_number(), cur + 41)
         page_min = max(0, cur - 2)
         for p in range(cur+1, page_max) + range(cur, page_min, -1):
             self.cache.prerender(p)
