@@ -65,7 +65,7 @@ class UI:
     c_da = gtk.DrawingArea()
 
     #: :class:`~gtk.AspectFrame` for the current slide in the Presenter window.
-    p_frame_cur = gtk.AspectFrame(yalign=1, ratio=4./3., obey_child=False)
+    p_frame_cur = gtk.AspectFrame(yalign=1, ratio=16./3., obey_child=False)
     #: :class:`~gtk.DrawingArea` for the current slide in the Presenter window.
     p_da_cur = gtk.DrawingArea()
     #: Slide counter :class:`~gtk.Label` for the current slide.
@@ -206,25 +206,9 @@ class UI:
         h.set_right_justified(True)
         bigvbox.pack_start(menubar, False)
 
-        # A little space around everything in the window
-        align = gtk.Alignment(0.5, 0.5, 1, 1)
-        align.set_padding(20, 20, 20, 20)
-
-        # Table
-        table = gtk.Table(2, 10, False)
-        table.set_col_spacings(25)
-        table.set_row_spacings(25)
-        align.add(table)
-        bigvbox.pack_end(align)
-
         # "Current slide" frame
-        frame = gtk.Frame("Current slide")
-        table.attach(frame, 0, 6, 0, 1)
-        align = gtk.Alignment(0.5, 0.5, 1, 1)
-        align.set_padding(0, 0, 12, 0)
-        frame.add(align)
-        vbox = gtk.VBox()
-        align.add(vbox)
+        vbox = gtk.HBox()
+        bigvbox.add(vbox)
         vbox.pack_start(self.p_frame_cur)
         self.eb_cur.set_visible_window(False)
         self.eb_cur.connect("event", self.on_label_event)
